@@ -11,12 +11,13 @@ CFLAGS=""
 INCPATH=""
 LIBPATH=""
 TEMP="tempMakefile"
-OUTFILE="Makefile"
+OUTFILE="Makefile"v
 MAIN_CLASS="Main"
 EXCLUDE=""
 SPECIFIC=""
 MAIN_SRC=""
 
+VERSION="0.4.2"
 SRC_EXT="cpp"
 DIR="./"
 OVERWRITE=0
@@ -120,6 +121,8 @@ initMakefile(){
 #call all necessary functions to build a functional makefile
 createMakefile(){
 	
+	cd $DIR
+	pwd
 	if [ -e "$OUTFILE" ] && [ $OVERWRITE -eq 0 ]  ; then
 		printf "Override current 'Makefile'? [y/n] "
 		read reply
@@ -250,7 +253,7 @@ displayHelp(){
 }
 
 dispVersion(){
-	echo "gmake 0.4.1"
+	echo "gmake $VERSION"
 	echo "This is free software. There is NO warranty; not even for"
 	echo -e "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
 }
@@ -378,7 +381,7 @@ handleArgs(){
 	[ "$LIBS" != "" ] && echo "LIBS: $LIBS";
 	[ "$EXCLUDE" != "" ] && echo "EXCLUDE FILES: $EXCLUDE";		
 	
-#	[ $flag -ne 0 ] && echo "Invalid argument." && exit 2
+	[ $# -gt 0 ] && [ $flag -eq 0 ] && echo "Invalid argument, run with '--help' for usage." && exit 2
 }
 
 handleArgs $*

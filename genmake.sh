@@ -11,12 +11,13 @@ CFLAGS=""
 INCPATH=""
 LIBPATH=""
 TEMP="tempMakefile"
-OUTFILE="Makefile"
+OUTFILE="Makefile"v
 MAIN_CLASS="Main"
 EXCLUDE=""
 SPECIFIC=""
 MAIN_SRC=""
 
+VERSION="0.4.2"
 SRC_EXT="cpp"
 DIR="./"
 OVERWRITE=0
@@ -252,7 +253,7 @@ displayHelp(){
 }
 
 dispVersion(){
-	echo "gmake 0.4.1"
+	echo "gmake $VERSION"
 	echo "This is free software. There is NO warranty; not even for"
 	echo -e "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
 }

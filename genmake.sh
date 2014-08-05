@@ -120,6 +120,8 @@ initMakefile(){
 #call all necessary functions to build a functional makefile
 createMakefile(){
 	
+	cd $DIR
+	pwd
 	if [ -e "$OUTFILE" ] && [ $OVERWRITE -eq 0 ]  ; then
 		printf "Override current 'Makefile'? [y/n] "
 		read reply
@@ -378,7 +380,7 @@ handleArgs(){
 	[ "$LIBS" != "" ] && echo "LIBS: $LIBS";
 	[ "$EXCLUDE" != "" ] && echo "EXCLUDE FILES: $EXCLUDE";		
 	
-#	[ $flag -ne 0 ] && echo "Invalid argument." && exit 2
+	[ $# -gt 0 ] && [ $flag -eq 0 ] && echo "Invalid argument, run with '--help' for usage." && exit 2
 }
 
 handleArgs $*

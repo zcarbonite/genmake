@@ -1,6 +1,6 @@
 #!/bin/bash
 
-### Generates makefiles for C/C++ sourcefiles
+### Generates makefiles for C/C++, and Java sourcefiles
 
 #VARIABLES
 SRC=""
@@ -154,32 +154,6 @@ createMakefile(){
 }
 
 ############### END OF STATIC MAKEFILE ##################
-
-
-############### DYNAMIC MAKEFILE GENERATION ###############
-#
-#BUGGED
-#
-#writeGenericMakefile(){
-#	echo "CC=g++" >> $TEMP
-#	echo "TARGET=$TARGET" >> $TEMP
-#	echo "LIBS=$LIBS" >> $TEMP
-#	echo "CFLAGS=$CFLAGS" >> $TEMP
-#	echo 'OBJECTS=$(addsuffix .o, $(basename $(shell ls *.'"$SRC_EXT )))" >> $TEMP
-#	echo 'HEADERS=$(addsuffix .h, $(basename $(shell ls *.h )))' >> $TEMP
-#	echo 'CLEAN_TARGETS=$(addsuffix .o, $(basename $(shell ls *.'"$SRC_EXT)))"'${TARGET} ${TEST_TARGET} *.rpo *.gch makefile.dep' >> $TEMP
-	
-#	echo -e '\nall: ${OBJECTS}\n\t${CC} ${LIBS} $^ -o ${TARGET}\n' >> $TEMP
-#	echo -e '%.o:\n\t${CC} ${CFLAGS} -c ${LDFLAGS} $< -o $@\n' >> $TEMP
-#	echo -e 'clean:\n\trm -f ${CLEAN_TARGETS}\n}' >> $TEMP
-#	echo -e 'tar:\n\tmake clean; tar -cvf TARBALL.tar.gz *\n' >> $TEMP	
-#	echo "makefile.dep:*.$SRC_EXT *.h" >> $TEMP
-#	echo -e '\tfor i in *.'"$SRC_EXT"'; do gcc -MM "$${i}"; done > $@' >> $TEMP
-#	echo -e 'include makefile.dep\n' >> $TEMP
-#}
-
-#	
-############### END OF DYNAMIC MAKEFILE ###############
 
 
 ############### JAVA MAKEFILE GENERATION ################
